@@ -1,4 +1,4 @@
-# TERRAFORM LBAS <!-- omit in TOC -->
+# TERRAFORM LABS <!-- omit in TOC -->
 *Carlos Chacón Calvo. Actualización: Enero 2022.*
 
 Este proyecto contiene la guía de laboratorio para el desarrollo del curso TerraformLabs. <!-- omit in TOC -->
