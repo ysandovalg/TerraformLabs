@@ -5,4 +5,4 @@ Este proyecto contiene la guía de laboratorio para el desarrollo del curso Terr
 
 Tabla de contenido:
 
-## 01. [Instalación](./01.Instalación.md)
+## 01. [Conexión e Instalación](./01.Instalación.md)
