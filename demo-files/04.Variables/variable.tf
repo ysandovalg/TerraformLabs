@@ -21,18 +21,16 @@ variable "genero" {
   default = ["Masculino", "Femenino", "Otros..."]
 }
 
-# variable "hard_drive" {
-#   type = map(any)
-#   default = {
-#     slow = "HHD"
-#     fast = "SSD"
-#   }
-# }
+variable "identificacion" {
+  type    = number
+}
 
-# variable "users" {
-#   type    = set(string)
-#   default = ["carlos", "marie", "monica", "hazel", "victor", "carlos"]
-# }
+variable "discos" {
+  type = map(any)
+	description = "tipos de almacenamiento"
+}
+
+
 
 
 
