@@ -12,9 +12,9 @@ echo "Terraform ok!" >> /home/${username}/ilog
 
 
 # github labs
-echo "Cloning Github project..." >> /home/${username}/ilog
-runuser -l ${username} -c  'git clone https://github.com/cachac/TerraformLabs.git'
-echo "Project ok!" >> /home/${username}/ilog
+# echo "Cloning Github project..." >> /home/${username}/ilog
+# runuser -l ${username} -c  'git clone https://github.com/cachac/TerraformLabs.git'
+# echo "Project ok!" >> /home/${username}/ilog
 
 # docker
 echo "Instaling Docker..." >> /home/${username}/ilog
@@ -35,7 +35,7 @@ echo "Docker Compose ok!" >> /home/${username}/ilog
 
 #code-server
 echo "Starting Code-Server..." >> /home/${username}/ilog
-mkdir -p /home/${username}/code-server
+mkdir -p /home/${username}/code-server/
 docker-compose up
 echo "Code-Server ok!" >> /home/${username}/ilog
 
