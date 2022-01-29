@@ -76,6 +76,11 @@ variable "username" {
   description = "Username of servers."
 }
 
+variable "codepass" {
+  type        = string
+  description = "Code-Server password"
+}
+
 variable "fullname" {
   type        = string
   description = "User's fullname."
@@ -107,7 +112,8 @@ variable "default_tags" {
   description = "Cloud tags."
 }
 
-variable "instance_count" {
-  type = string
+variable "users" {
+  type    = list(string)
+  default = ["user10", "user11", "user12"]
 }
 

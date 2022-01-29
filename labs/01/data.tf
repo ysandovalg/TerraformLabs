@@ -4,8 +4,8 @@ data "google_compute_image" "master_image" {
   project = "ubuntu-os-cloud"
 }
 
-resource "google_compute_disk" "kube-vol" {
-  name  = "kube-disk"
+resource "google_compute_disk" "terra-vol" {
+  name  = "terra-disk"
   type  = "pd-standard"
   zone  = var.gcp_zone_a
   # image = "debian-9-stretch-v20200805"
