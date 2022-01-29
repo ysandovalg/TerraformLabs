@@ -53,7 +53,7 @@ runuser -l ${username} -c 'sudo systemctl restart code-server@$USER' >> /home/${
 echo "Code-Server ok!" >> /home/${username}/ilog
 
 # certbot
-sleep 60 | echo "Issuing Certs..." >> /home/${username}/ilog
+sleep 300 | echo "Issuing Certs..." >> /home/${username}/ilog
 
 sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${labuser}.terralabs.tk -d ${labuser}.terralabs.tk -m info@storylabs.dev >> /home/${username}/ilog
 echo "Certbot Online!" >> /home/${username}/ilog
