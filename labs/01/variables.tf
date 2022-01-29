@@ -114,8 +114,6 @@ variable "default_tags" {
 
 variable "users" {
   type    = list(string)
-  # default = ["user10", "user11", "user12"]
-  # default = ["user01", "user02", "user03"]
-  default = ["cachac"]
+  description = "Lista de usuarios"
 }
 

@@ -1,6 +1,6 @@
 gcp_account_json = "../keys/prod/kubelabs_key.json"
-ssh_pub_key = "../keys/prod/kubelabkey.pub"
-ssh_key = "../keys/prod/kubelabkey"
+ssh_pub_key      = "../keys/prod/kubelabkey.pub"
+ssh_key          = "../keys/prod/kubelabkey"
 
 # Project to deploy resources into
 gcp_project = "dockerlabs-332203"
@@ -35,13 +35,13 @@ disk_size = "30"
 disk_type = "pd-standard"
 
 domain       = "terralabs"
-subdomain   = "terra"
+subdomain    = "terra"
 username     = "terra"
 fullname     = "Carlos Ch"
 host_prefix  = "terra"
 vpc_name     = "terra-network"
 vpc_ip_range = "20.0.0.0/24"
-ip_lab   = "20.0.0.11"
+ip_lab       = "20.0.0.11"
 fw_name      = "fw-terra"
 
 
@@ -50,6 +50,8 @@ default_tags = {
   user = "terra"
   env  = "dev"
 }
+
+users = ["cachac"]
 
 
 
