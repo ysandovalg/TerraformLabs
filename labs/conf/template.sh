@@ -43,8 +43,8 @@ runuser -l ${username} -c 'sudo systemctl enable -now code-server@$USER'
 echo Code-Server Online! >> /home/${username}/ilog
 
 # password
-# sudo sed -i "s/codepass/${codepass}/g" /home/${username}/config.yaml
 sudo mv /home/${username}/config.yaml /home/${username}/.config/code-server/config.yaml
+sed -i "s/^password.*/password: ${codepass}/" /home/${username}/config.yaml
 
 runuser -l ${username} -c 'sudo systemctl restart code-server@$USER'
 

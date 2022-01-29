@@ -87,14 +87,13 @@ resource "google_compute_instance" "terra" {
     }
   }
 
-  provisioner "local-exec" {
-    command = <<EOT
-			ssh-keygen -f ~/.ssh/known_hosts -R "${self.network_interface.0.access_config.0.nat_ip}"
-			echo ${var.username}: >> ~/config.yaml
-			ssh ${var.username}@${self.network_interface.0.access_config.0.nat_ip} -i ~/Documents/code/dockerlabs/labs/keys/prod/dockerlabkey sed -n  3p .config/code-server/config.yaml  >> ~/config.yaml
-		EOT
-  }
-  # rsync -Pav -e "ssh -i ~/Documents/code/dockerlabs/labs/keys/prod/dockerlabkey -o StrictHostKeyChecking=no" ${var.username}@${self.network_interface.0.access_config.0.nat_ip}:/home/${var.username}/.config/code-server/config.yaml  ~/config.yaml
+  # provisioner "local-exec" {
+  #   command = <<EOT
+  # 		ssh-keygen -f ~/.ssh/known_hosts -R "${self.network_interface.0.access_config.0.nat_ip}"
+  # 		echo ${self.name}: >> ~/config.yaml
+  # 		ssh ${var.username}@${self.network_interface.0.access_config.0.nat_ip} -o StrictHostKeyChecking=no -i ~/Documents/code/dockerlabs/labs/keys/prod/dockerlabkey sed -n  3p .config/code-server/config.yaml  >> ~/config.yaml
+  # 	EOT
+  # }
 }
 
 
