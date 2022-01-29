@@ -20,8 +20,8 @@ echo "Project ok!" >> /home/${username}/ilog
 echo "Installing Nginx..." >> /home/${username}/ilog
 sudo apt install -y nginx certbot python3-certbot-nginx
 
-sudo sed -i "s/username/${username}/g" /home/${username}/code-server.conf
-sudo sed -i "s/username/${username}/g" /home/${username}/webserver.conf
+sudo sed -i "s/username/${labuser}/g" /home/${username}/code-server.conf
+sudo sed -i "s/username/${labuser}/g" /home/${username}/webserver.conf
 
 sudo mv /home/${username}/code-server.conf /etc/nginx/sites-available/code-server.conf
 sudo mv /home/${username}/webserver.conf /etc/nginx/sites-available/webserver.conf
@@ -38,15 +38,14 @@ sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${username
 
 echo "Nginx Ok!" >> /home/${username}/ilog
 
-
 #code-server
 # https://coder.com/docs/code-server/latest/install#installsh
 echo "Starting Code-Server..." >> /home/${username}/ilog
 runuser -l ${username} -c 'curl -fsSL https://code-server.dev/install.sh -o /home/${username}/install.sh'
 runuser -l ${username} -c 'sh /home/${username}/install.sh'
-sleep 60 | echo Code-Server Online! >> /home/${username}/ilog
 
 runuser -l ${username} -c 'sudo systemctl enable --now code-server@$USER'
+sleep 10 | echo Code-Server Online! >> /home/${username}/ilog
 
 # password
 sudo sed -i "s/codepass/${codepass}/g" /home/${username}/config.yaml

@@ -44,6 +44,7 @@ resource "google_compute_instance" "terra" {
     user-data = templatefile("../conf/template.sh",
       {
         username = var.username
+        labuser     = each.value
         codepass = var.codepass
     })
   }
