@@ -45,6 +45,30 @@ resource "google_compute_instance" "terra" {
         external_ip = google_compute_address.external_address[count.index].address
     })
   }
+
+  provisioner "file" {
+    source      = "../conf/config.yaml"
+    destination = "/home/${var.username}/code-server/config.yaml"
+
+    connection {
+      type        = "ssh"
+      host        = self.network_interface.0.access_config.0.nat_ip
+      user        = var.username
+      private_key = file(var.ssh_key)
+    }
+  }
+
+  provisioner "file" {
+    source      = "../conf/docker-compose.yaml"
+    destination = "/home/${var.username}/docker-compose.yaml"
+
+    connection {
+      type        = "ssh"
+      host        = self.network_interface.0.access_config.0.nat_ip
+      user        = var.username
+      private_key = file(var.ssh_key)
+    }
+  }
 }
 
 
