@@ -34,7 +34,7 @@ machine_type = "f1-micro"
 disk_size = "30"
 disk_type = "pd-standard"
 
-domain       = "terra"
+domain       = "terralabs"
 subdomain   = "terra"
 username     = "terra"
 fullname     = "Carlos Ch"

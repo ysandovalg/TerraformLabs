@@ -40,7 +40,6 @@ runuser -l ${username} -c 'sh /home/${username}/install.sh'
 
 # runuser -l ${username} -c 'code-server'
 runuser -l ${username} -c 'sudo systemctl enable --now code-server@$USER'
-sleep 60 | echo Code-Server Online! >> /home/${username}/ilog
 
 # password
 sudo mv /home/${username}/config.yaml /home/${username}/.config/code-server/config.yaml >> /home/${username}/ilog

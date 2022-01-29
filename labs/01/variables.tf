@@ -64,7 +64,7 @@ variable "disk_type" {
 variable "domain" {
   type        = string
   description = "domain"
-  default     = "terraform.tk"
+  default     = "terralabs.tk"
 }
 
 variable "subdomain" {
@@ -116,6 +116,6 @@ variable "users" {
   type    = list(string)
   # default = ["user10", "user11", "user12"]
   # default = ["user01", "user02", "user03"]
-  default = ["user02"]
+  default = ["cachac"]
 }
 
