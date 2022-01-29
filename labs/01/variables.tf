@@ -76,10 +76,10 @@ variable "username" {
   description = "Username of servers."
 }
 
-variable "codepass" {
-  type        = string
-  description = "Code-Server password"
-}
+# variable "codepass" {
+#   type        = string
+#   description = "Code-Server password"
+# }
 
 variable "fullname" {
   type        = string
@@ -114,6 +114,8 @@ variable "default_tags" {
 
 variable "users" {
   type    = list(string)
-  default = ["user10", "user11", "user12"]
+  # default = ["user10", "user11", "user12"]
+  # default = ["user01", "user02", "user03"]
+  default = ["user02"]
 }
 
