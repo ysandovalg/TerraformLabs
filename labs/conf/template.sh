@@ -18,7 +18,7 @@ echo "Project ok!" >> /home/${username}/ilog
 
 # Nginx
 echo "Installing Nginx..." >> /home/${username}/ilog
-sudo apt install -y nginx certbot python3-certbot-nginx
+sudo apt install -y nginx # certbot python3-certbot-nginx
 
 sudo sed -i "s/username/${labuser}/g" /home/${username}/code-server.conf
 sudo sed -i "s/username/${labuser}/g" /home/${username}/webserver.conf
@@ -33,11 +33,6 @@ sudo rm -f /etc/nginx/sites-available/default
 sudo rm -f /etc/nginx/sites-enabled/default
 
 sudo nginx -s reload
-sleep 10 | echo Nginx Online! >> /home/${username}/ilog
-echo "Trying to Certbot..." >> /home/${username}/ilog
-
-sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${labuser}.terralabs.tk -d ${labuser}.terralabs.tk -m info@storylabs.dev
-echo "Certbot Online!" >> /home/${username}/ilog
 
 echo "Nginx Ok!" >> /home/${username}/ilog
 
@@ -56,6 +51,11 @@ sudo mv /home/${username}/config.yaml /home/${username}/.config/code-server/conf
 runuser -l ${username} -c 'sudo systemctl restart code-server@$USER' >> /home/${username}/ilog
 
 echo "Code-Server ok!" >> /home/${username}/ilog
+
+# sleep 60 | echo "Issuing Certs..." >> /home/${username}/ilog
+
+# sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${labuser}.terralabs.tk -d ${labuser}.terralabs.tk -m info@storylabs.dev
+# echo "Certbot Online!" >> /home/${username}/ilog
 
 echo "*** FIN ***" >> /home/${username}/ilog
 date '+%Y/%m/%d %H:%M:%S %z' >> /home/${username}/ilog
