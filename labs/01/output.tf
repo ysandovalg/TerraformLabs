@@ -5,6 +5,12 @@ output "lab-ssh" {
   }
 }
 
+output "lab-code" {
+  value = {
+    for v in var.users : v => "code.${v}.terraform.tk"
+  }
+}
+
 output "local-ip" {
   value = {
     for k, t in google_compute_instance.terra : k => t.network_interface.0.network_ip

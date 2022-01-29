@@ -33,8 +33,11 @@ sudo rm -f /etc/nginx/sites-available/default
 sudo rm -f /etc/nginx/sites-enabled/default
 
 sudo nginx -s reload
+sleep 10 | echo Nginx Online! >> /home/${username}/ilog
+echo "Trying to Certbot..." >> /home/${username}/ilog
 
-sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${username}.terralabs.tk -d ${username}.terralabs.tk -m info@storylabs.dev
+sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${labuser}.terralabs.tk -d ${labuser}.terralabs.tk -m info@storylabs.dev
+echo "Certbot Online!" >> /home/${username}/ilog
 
 echo "Nginx Ok!" >> /home/${username}/ilog
 
