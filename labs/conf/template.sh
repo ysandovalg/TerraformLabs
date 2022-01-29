@@ -42,6 +42,7 @@ runuser -l ${username} -c 'sh /home/${username}/install.sh'
 runuser -l ${username} -c 'sudo systemctl enable --now code-server@$USER'
 
 # password
+sudo sed -i "s/codepass/${codepass}/g" /home/${username}/config.yaml
 sudo mv /home/${username}/config.yaml /home/${username}/.config/code-server/config.yaml >> /home/${username}/ilog
 runuser -l ${username} -c 'sudo systemctl restart code-server@$USER' >> /home/${username}/ilog
 
