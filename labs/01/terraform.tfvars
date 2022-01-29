@@ -51,7 +51,7 @@ default_tags = {
   env  = "dev"
 }
 
-users = ["cachac01"]
+users = ["cachac01","mariech"]
 
 
 

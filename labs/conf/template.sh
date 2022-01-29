@@ -19,15 +19,22 @@ echo "Project ok!" >> /home/${username}/ilog
 # Nginx
 echo "Installing Nginx..." >> /home/${username}/ilog
 sudo apt install -y nginx certbot python3-certbot-nginx
-sudo mv /home/${username}/code-server.conf /etc/nginx/sites-available/code-server
-sudo ln -s /etc/nginx/sites-available/code-server /etc/nginx/sites-enabled/code-server
+
+sudo sed -i "s/username/${username}/g" /home/${username}/code-server.conf
+sudo sed -i "s/username/${username}/g" /home/${username}/webserver.conf
+
+sudo mv /home/${username}/code-server.conf /etc/nginx/sites-available/code-server.conf
+sudo mv /home/${username}/webserver.conf /etc/nginx/sites-available/webserver.conf
+
+sudo ln -s /etc/nginx/sites-available/code-server.conf /etc/nginx/sites-enabled/code-server.conf
+sudo ln -s /etc/nginx/sites-available/webserver.conf /etc/nginx/sites-enabled/webserver.conf
 
 sudo rm -f /etc/nginx/sites-available/default
 sudo rm -f /etc/nginx/sites-enabled/default
 
 sudo nginx -s reload
 
-# sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.terra1.terralabs.tk -m info@storylabs.dev
+sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${username}.terralabs.tk -d ${username}.terralabs.tk -m info@storylabs.dev
 
 echo "Nginx Ok!" >> /home/${username}/ilog
 
@@ -37,8 +44,8 @@ echo "Nginx Ok!" >> /home/${username}/ilog
 echo "Starting Code-Server..." >> /home/${username}/ilog
 runuser -l ${username} -c 'curl -fsSL https://code-server.dev/install.sh -o /home/${username}/install.sh'
 runuser -l ${username} -c 'sh /home/${username}/install.sh'
+sleep 60 | echo Code-Server Online! >> /home/${username}/ilog
 
-# runuser -l ${username} -c 'code-server'
 runuser -l ${username} -c 'sudo systemctl enable --now code-server@$USER'
 
 # password
