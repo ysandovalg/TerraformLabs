@@ -85,20 +85,20 @@ resource "google_compute_instance" "terra" {
     }
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "echo 'Waiting for cloud-init to complete...'",
-      "cloud-init status --wait > /dev/null",
-      "echo 'Completed cloud-init!!'"
-    ]
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "echo 'Waiting for cloud-init to complete...'",
+  #     "cloud-init status --wait > /dev/null",
+  #     "echo 'Completed cloud-init!!'"
+  #   ]
 
-    connection {
-      type        = "ssh"
-      host        = self.network_interface.0.access_config.0.nat_ip
-      user        = var.username
-      private_key = file(var.ssh_key)
-    }
-  }
+  #   connection {
+  #     type        = "ssh"
+  #     host        = self.network_interface.0.access_config.0.nat_ip
+  #     user        = var.username
+  #     private_key = file(var.ssh_key)
+  #   }
+  # }
 
   provisioner "local-exec" {
     command = <<EOT

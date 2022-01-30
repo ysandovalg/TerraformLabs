@@ -7,7 +7,7 @@ output "lab-ssh" {
 
 output "lab-code" {
   value = {
-    for v in var.users : v => "code.${v}.terraform.tk"
+    for k, t in google_dns_record_set.code_terralabs_tk : k => "${t.name}"
   }
 }
 
