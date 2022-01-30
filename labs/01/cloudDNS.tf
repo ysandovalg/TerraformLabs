@@ -13,8 +13,6 @@ resource "google_dns_managed_zone" "terralabs_tk" {
 
 }
 resource "google_dns_record_set" "user_terralabs_tk" {
-  depends_on = [google_dns_managed_zone.terralabs_tk]
-
   for_each = toset(var.users)
   name     = format("%s.%s.%s.", "${each.value}", var.domain, "tk")
 
@@ -25,8 +23,6 @@ resource "google_dns_record_set" "user_terralabs_tk" {
 }
 
 resource "google_dns_record_set" "www_user_terralabs_tk" {
-  depends_on = [google_dns_managed_zone.terralabs_tk]
-
   for_each = toset(var.users)
   name     = format("www.%s.%s.%s.", "${each.value}", var.domain, "tk")
 
@@ -38,8 +34,6 @@ resource "google_dns_record_set" "www_user_terralabs_tk" {
 
 
 resource "google_dns_record_set" "code_terralabs_tk" {
-  depends_on = [google_dns_managed_zone.terralabs_tk]
-
   for_each = toset(var.users)
   name     = format("code.%s.%s.%s.", "${each.value}", var.domain, "tk")
 

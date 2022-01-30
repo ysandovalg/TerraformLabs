@@ -53,7 +53,21 @@ runuser -l ${username} -c 'sudo systemctl restart code-server@$USER' >> /home/${
 echo "Code-Server ok!" >> /home/${username}/ilog
 
 # certbot
-sleep 300 | echo "Issuing Certs..." >> /home/${username}/ilog
+echo "Issuing Certs..." >> /home/${username}/ilog
+
+i="0"
+while [ $i -lt 10 ]
+do
+  if ! ping -c 1 code.${labuser}.terralabs.tk &> /dev/null
+	then
+		echo "waiting DNS records [$i]..." >> /home/${username}/ilog
+		sleep 10
+	else
+		echo "code.${labuser}.terralabs.tk is online!!" >> /home/${username}/ilog
+		break
+	fi
+	i=$[$i+1]
+done
 
 sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${labuser}.terralabs.tk -d ${labuser}.terralabs.tk -m info@storylabs.dev >> /home/${username}/ilog
 echo "Certbot Online!" >> /home/${username}/ilog
