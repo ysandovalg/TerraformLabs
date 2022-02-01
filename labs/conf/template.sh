@@ -70,5 +70,13 @@ sleep 10 | echo "Issuing Certs..." >> /home/${username}/ilog
 sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${labuser}.terralabs.tk -d ${labuser}.terralabs.tk -m info@storylabs.dev >> /home/${username}/ilog
 echo "Certbot Online!" >> /home/${username}/ilog
 
+# keybase
+# curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+# sudo apt install ./keybase_amd64.deb
+# keybase login  --devicename code.${labuser}.terralabs.tk
+curl https://keybase.io/carlosechc11/pgp_keys.asc | gpg --import
+
+
+
 echo "*** FIN ***" >> /home/${username}/ilog
 date '+%Y/%m/%d %H:%M:%S %z' >> /home/${username}/ilog
