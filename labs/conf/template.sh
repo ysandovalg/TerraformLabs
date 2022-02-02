@@ -71,12 +71,25 @@ sudo certbot --non-interactive --redirect --agree-tos --nginx -d code.${labuser}
 echo "Certbot Online!" >> /home/${username}/ilog
 
 # keybase
-# curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
-# sudo apt install ./keybase_amd64.deb
-# keybase login  --devicename code.${labuser}.terralabs.tk
-curl https://keybase.io/carlosechc11/pgp_keys.asc | gpg --import
+curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+sudo apt install -y ./keybase_amd64.deb
+#keybase login  --devicename code.${labuser}.terralabs.tk carlosechc11
+##curl https://keybase.io/carlosechc11/pgp_keys.asc | gpg --import
+## "wave easily quit trumpet rhythm scrap reunion apart desk trend artwork color buddy"
+#export KEYBASE_PAPERKEY=${KEYBASE_PAPERKEY}
+#export KEYBASE_DEVICENAME=${labuser}
+#keybase login carlosechc11
 
+# aws
+#curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#sudo apt install unzip
+#unzip awscliv2.zip
+#sudo ./aws/install
+#export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+#export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+#export AWS_DEFAULT_REGION=${region}
 
+# export AWS_SECRET=$(terraform output -raw encrypted_secret | base64 --decode | keybase pgp decrypt)
 
 echo "*** FIN ***" >> /home/${username}/ilog
 date '+%Y/%m/%d %H:%M:%S %z' >> /home/${username}/ilog
