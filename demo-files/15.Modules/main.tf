@@ -7,3 +7,9 @@ module "file-module" {
 
   # filename = local.filename
 }
+
+# module "file-module-dos" {
+#   source = "./file-module"
+
+#   filename = "dos.txt"
+# }
